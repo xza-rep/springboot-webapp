@@ -18,20 +18,20 @@
         association 关联
         collection 集合包含
         -->
-        <association property="eDpartment" javaType="Department">
+        <association property="eDepartment" javaType="Department">
             <id property="id" column="did"/>
             <result property="departmentName" column="dname"/>
         </association>
     </resultMap>
 
     <select id="getEmployees" resultMap="EmployeeMap">
-        select e.id as eid,last_name,eamil,gender,birth,d.id as did,d.department_name as dname
+        select e.id as eid,last_name,email,gender,birth,d.id as did,d.department_name as dname
         from employee e,department d where e.department=d.id
     </select>
 
     <insert id="save" parameterType="Employee">
         insert into employee (last_name,email,gender,department,birth)
-        values (#{lastName},#{email}j,#{gender},#{department},#{birth})
+        values (#{lastName},#{email},#{gender},#{department},#{birth})
     </insert>
 
     <select id="get" resultType="Employee">
@@ -41,4 +41,10 @@
     <delete id="delete" parameterType="int">
         delete from employee where id=#{id}
     </delete>
+
+    <update id="update" parameterType="Employee">
+        update employee set
+        last_name=#{lastName},email=#{email},gender=#{gender},department=#{department},birth=#{birth}
+         where id = #{id} ;
+    </update>
 </mapper>

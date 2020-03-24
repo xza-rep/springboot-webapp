@@ -6,10 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-/**
- * @author 拾柒
- * @create 2020/3/19
- */
 // 员工类
 @Data
 @AllArgsConstructor
